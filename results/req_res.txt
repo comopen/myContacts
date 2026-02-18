@@ -1,0 +1,23 @@
+app.get("/", (req, res) => { 
+  const headers = req.headers; 
+  res.send(headers); 
+}); 
+
+
+app.get("/", (req, res) => { 
+  res.status(200); 
+  res.json({ message: "Hello Node!" }); 
+}); 
+
+res.status(200).send('OK');
+res.sendStatus(200);
+
+app.get("/", (req, res) => { 
+  res.status(200); 
+  res.sendFile(__dirname + "/assets/contacts.html");
+}); 
+
+
+app.post("/contacts", (req, res) => { 
+  res.status(201).send("Create Contacts");
+}); 

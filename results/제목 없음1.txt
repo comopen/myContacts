@@ -1,0 +1,39 @@
+env 파일
+DB_CONNECT = mongodb+srv://admin:12345@jaeho.eu0vgsq.mongodb.net/myContacts?retryWrites=true&w=majority
+
+dbConnect.js 파일
+const mongoose = require("mongoose");
+require("dotenv").config();
+const dbConnect = async () => {
+  try {
+    const connect = await mongoose.connect(process.env.DB_CONNECT);
+    console.log("DB connected");
+  } catch (err) {
+    console.log(err);
+  }
+};
+module.exports = dbConnect;
+
+app.js 파일
+const express = require("express");
+const dbConnect = require("./config/dbConnect");
+const app = express();
+const port = 3000;
+dbConnect();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.listen(port, () => {
+  console.log(`${port}번 포트에서 서버 실행 중`);
+});
+
+node app 실행시 에러
+Error: querySrv ECONNREFUSED _mongodb._tcp.jaeho.eu0vgsq.mongodb.net   
+    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17) {
+  errno: undefined,
+  code: 'ECONNREFUSED',
+  syscall: 'querySrv',
+  hostname: '_mongodb._tcp.jaeho.eu0vgsq.mongodb.net'
+}
+
+
+ipconfig /flushdns 

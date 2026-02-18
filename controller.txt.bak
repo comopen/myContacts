@@ -1,0 +1,106 @@
+const getAllContacts = async(req, res) => {
+try {
+    res.status(200).send("Contacts Page");
+    } catch(error){
+       res.send(error.message);
+      }
+};
+
+module.exports=getAllContacts;
+---------------------------
+const getAllContacts = require("../controllers/contactController");
+
+router
+.route("/")
+.get(getAllContacts);
+
+// @desc Create a contact
+// @route POST /contacts
+const createContact = asyncHandler(async (req, res) => {
+  // 새 연락처 추가하기
+  console.log(req.body);
+  const { name, email, phone } = req.body;
+  if (!name || !email || !phone) {
+    return res.status(400).send("필수값이 입력되지 않았습니다.");
+  }
+  res.status(201).send("Create Contacts");
+});
+
+module.exports = {getAllContacts, createContact};
+
+const {
+  getAllContacts,
+  createContact
+} = require("../controllers/contactController");
+
+
+{
+  "name":"kim",
+  "email":"kim@aaa.com",
+  "phone":"111-222-333"
+}
+{
+  "name":"lee",
+  "email":"lee@aaa.com",
+  "phone":"222-333-444"
+}
+{
+  "name":"park",
+  "email":"park@aaa.com",
+  "phone":"333-444-555"
+}
+{
+  "name":"choi",
+  "email":"choi@aaa.com",
+  "phone":"444-555-666"
+}
+{
+  "name":"jung",
+  "email":"jung@aaa.com",
+  "phone":"555-666-777"
+}
+{
+  "name":"kang",
+  "email":"kang@aaa.com",
+  "phone":"666-777-888"
+}
+{
+  "name":"yoon",
+  "email":"yoon@aaa.com",
+  "phone":"777-888-999"
+}
+{
+  "name":"kim",
+  "email":"kimsss@aaa.com",
+  "phone":"111-111-333"
+}
+{
+  "name":"kang",
+  "email":"kangkang@aaa.com",
+  "phone":"000-111-000 "
+}
+
+const express = require("express");
+const app = express();
+
+app.use(express.json());
+// 미들웨어 등록(인코딩된 URL 파싱을 위해)
+app.use(express.urlencoded({ extended: true }));
+
+// 파싱한 자료를 가져와 사용
+app.post("/login", (req, res) => {
+   const username = req.body.username;
+   const password = req.body.password;
+   res.send(`입력된 username: ${username}, 입력된 password: ${password}`);
+});
+
+app.listen(3000, () => {
+  console.log('3000번 포트에서 서버 실행 중');
+});
+
+{
+  "username":"kim",
+  "password":"1234"
+}
+
+

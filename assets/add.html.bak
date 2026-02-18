@@ -1,0 +1,5 @@
+<form method="POST" id="add-user">
+이름: <input type="text" name="name"><br>
+이메일: <input type="text" name="email"><br>
+전화번호: <input type="text＂ name="phone"><br>
+<button type="submit">저장하기</button>
